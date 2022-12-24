@@ -15,10 +15,9 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 # RUN curl -O https://archive.apache.org/dist/hadoop/common/KEYS
 # RUN gpg --import KEYS
 
-ENV HADOOP_VERSION 3.2.3
+ENV HADOOP_VERSION 3.2.4
 # ENV HADOOP_URL https://archive.apache.org/dist/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
 
-# https://mirrors.huaweicloud.com/apache/hadoop/common/hadoop-3.2.3/hadoop-3.2.3.tar.gz
 ENV HADOOP_URL https://mirrors.huaweicloud.com/apache/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
 
 RUN set -x \
