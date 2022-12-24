@@ -5,8 +5,8 @@ on:
     branches: [ 2.0.0-hadoop3.2.2-java8 ]
   pull_request:
     branches: [ 2.0.0-hadoop3.2.2-java8 ]
-  release:
-    types: [ created ]
+#  release:
+#    types: [ created ]
 #  schedule:
 #    - cron: "0 2 * * MON-FRI" # Runs at 02:00 UTC
 
