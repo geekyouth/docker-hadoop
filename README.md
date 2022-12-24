@@ -86,4 +86,10 @@ hdfs dfs -rm -r -f /output
 - Datanode: <http://127.0.0.1:9864>
 - Resource manager: <http://127.0.0.1:8088>
 - Nodemanager: <http://127.0.0.1:8042>
-- History server: <http://127.0.0.1:8188>
+- History server: <http://127.0.0.1:8188> <http://127.0.0.1:19888>
+
+# hosts:
+```
+127.0.0.1 namenode datanode resourcemanager nodemanager historyserver
+
+```
