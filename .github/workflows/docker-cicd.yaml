@@ -2,9 +2,9 @@ name: build docker image and push to docker hub
 
 on:
   push:
-    branches: [ 2.0.0-hadoop3.1.3-java8 ]
+    branches: [ 2.0.0-hadoop3.1.2-java8 ]
   pull_request:
-    branches: [ 2.0.0-hadoop3.1.3-java8 ]
+    branches: [ 2.0.0-hadoop3.1.2-java8 ]
 #  release:
 #    types: [ created ]
 #  schedule:

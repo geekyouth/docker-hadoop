@@ -12,7 +12,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
-ENV HADOOP_VERSION 3.1.3
+ENV HADOOP_VERSION 3.1.2
 ENV HADOOP_URL https://mirrors.huaweicloud.com/apache/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
 
 RUN set -x \
