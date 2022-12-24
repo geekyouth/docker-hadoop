@@ -2,8 +2,9 @@ version: "3"
 
 services:
   namenode:
-    image: geekyouth/hadoop-namenode:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-namenode:2.0.0-hadoop2.10.2-java8
     container_name: namenode
+    hostname: namenode
     restart: unless-stopped
     ports:
       - "9870:9870"
@@ -16,8 +17,9 @@ services:
       - ./hadoop.env
 
   datanode:
-    image: geekyouth/hadoop-datanode:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-datanode:2.0.0-hadoop2.10.2-java8
     container_name: datanode
+    hostname: datanode
     depends_on:
       - namenode
     restart: unless-stopped
@@ -29,10 +31,11 @@ services:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
       - ./hadoop.env
-  
+
   resourcemanager:
-    image: geekyouth/hadoop-resourcemanager:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-resourcemanager:2.0.0-hadoop2.10.2-java8
     container_name: resourcemanager
+    hostname: resourcemanager
     depends_on:
       - namenode
       - datanode
@@ -45,8 +48,9 @@ services:
       - ./hadoop.env
 
   nodemanager1:
-    image: geekyouth/hadoop-nodemanager:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-nodemanager:2.0.0-hadoop2.10.2-java8
     container_name: nodemanager
+    hostname: nodemanager
     depends_on:
       - namenode
       - datanode
@@ -58,10 +62,11 @@ services:
       SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
       - ./hadoop.env
-  
+
   historyserver:
-    image: geekyouth/hadoop-historyserver:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-historyserver:2.0.0-hadoop2.10.2-java8
     container_name: historyserver
+    hostname: historyserver
     restart: unless-stopped
     depends_on:
       - namenode
@@ -69,13 +74,14 @@ services:
       - resourcemanager
     ports:
       - "8188:8188"
+      - "19888:19888"
     environment:
       SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864 resourcemanager:8088"
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
       - ./hadoop.env
-  
+
 volumes:
   hadoop_namenode:
   hadoop_datanode:

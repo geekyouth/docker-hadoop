@@ -1,23 +1,24 @@
 # Changes
 ## 2022-12-24 
-- build version `2.0.0-hadoop3.0.1-java8`
-- build version `2.0.0-hadoop3.0.2-java8`
-- build version `2.0.0-hadoop3.0.3-java8`
-- build version `2.0.0-hadoop3.1.0-java8`
-- build version `2.0.0-hadoop3.1.1-java8`
-- build version `2.0.0-hadoop3.1.2-java8`
-- build version `2.0.0-hadoop3.1.3-java8`
-- build version `2.0.0-hadoop3.1.4-java8`
-- build version `2.0.0-hadoop3.2.0-java8`
-- build version `2.0.0-hadoop3.2.1-java8`
-- build version `2.0.0-hadoop3.2.2-java8`
-- build version `2.0.0-hadoop3.2.3-java8`
-- build version `2.0.0-hadoop3.2.4-java8`
-- build version `2.0.0-hadoop3.3.0-java8`
-- build version `2.0.0-hadoop3.3.1-java8`
-- build version `2.0.0-hadoop3.3.2-java8`
-- build version `2.0.0-hadoop3.3.3-java8`
-- build version `2.0.0-hadoop3.3.4-java8`
+- build version `2.0.0-hadoop2.10.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.0.1-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.0.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.0.3-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.0-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.1-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.3-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.4-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.0-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.1-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.3-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.4-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.0-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.1-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.3-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.4-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
 
 Version 2.0.0 introduces uses wait_for_it script for the cluster startup
 
@@ -70,10 +71,10 @@ If you need to extend some other configuration file, refer to base/entrypoint.sh
 make -f Makefile;
 docker compose up;
 
-docker run -it --network=docker-hadoop_default --env-file=hadoop.env --rm geekyouth/hadoop-submit:2.0.0-hadoop3.0.1-java8 /bin/bash
+docker run -it --network=docker-hadoop_default --env-file=hadoop.env --rm geekyouth/hadoop-submit:2.0.0-hadoop2.10.2-java8 /bin/bash
 
 hdfs dfs -mkdir -p /input; \
-hdfs dfs -put /opt/hadoop-3.0.1/README.txt /input; \
+hdfs dfs -put /opt/hadoop-2.10.2/README.txt /input; \
 hadoop jar /opt/hadoop/applications/WordCount.jar WordCount /input /output; \
 hdfs dfs -cat /output/*
 
@@ -86,4 +87,10 @@ hdfs dfs -rm -r -f /output
 - Datanode: <http://127.0.0.1:9864>
 - Resource manager: <http://127.0.0.1:8088>
 - Nodemanager: <http://127.0.0.1:8042>
-- History server: <http://127.0.0.1:8188>
+- History server: <http://127.0.0.1:8188> <http://127.0.0.1:19888>
+
+# hosts:
+```
+127.0.0.1 namenode datanode resourcemanager nodemanager historyserver
+
+```
