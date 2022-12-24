@@ -1,24 +1,24 @@
 # Changes
 ## 2022-12-24 
-- build version `2.0.0-hadoop2.10.2-java8`
-- build version `2.0.0-hadoop3.0.1-java8`
-- build version `2.0.0-hadoop3.0.2-java8`
-- build version `2.0.0-hadoop3.0.3-java8`
-- build version `2.0.0-hadoop3.1.0-java8`
-- build version `2.0.0-hadoop3.1.1-java8`
-- build version `2.0.0-hadoop3.1.2-java8`
-- build version `2.0.0-hadoop3.1.3-java8`
-- build version `2.0.0-hadoop3.1.4-java8`
-- build version `2.0.0-hadoop3.2.0-java8`
-- build version `2.0.0-hadoop3.2.1-java8`
-- build version `2.0.0-hadoop3.2.2-java8`
-- build version `2.0.0-hadoop3.2.3-java8`
-- build version `2.0.0-hadoop3.2.4-java8`
-- build version `2.0.0-hadoop3.3.0-java8`
-- build version `2.0.0-hadoop3.3.1-java8`
-- build version `2.0.0-hadoop3.3.2-java8`
-- build version `2.0.0-hadoop3.3.3-java8`
-- build version `2.0.0-hadoop3.3.4-java8`
+- build version `2.0.0-hadoop2.10.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.0.1-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.0.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.0.3-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.0-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.1-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.3-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.1.4-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.0-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.1-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.3-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.2.4-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.0-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.1-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.2-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.3-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
+- build version `2.0.0-hadoop3.3.4-java8` [![build docker image and push to docker hub](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml/badge.svg)](https://github.com/geekyouth/docker-hadoop/actions/workflows/docker-cicd.yaml)
 
 Version 2.0.0 introduces uses wait_for_it script for the cluster startup
 
