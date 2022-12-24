@@ -3,24 +3,22 @@ FROM debian:9
 LABEL MAINTAINER=https://github.com/geekyouth/docker-hadoop
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      openjdk-8-jdk \
-      net-tools \
-      curl \
-      netcat \
-      gnupg \
-      libsnappy-dev \
+    openjdk-8-jdk \
+    net-tools \
+    curl \
+    netcat \
+    libsnappy-dev \
     && rm -rf /var/lib/apt/lists/*
       
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
-RUN curl -O https://archive.apache.org/dist/hadoop/common/KEYS
+# RUN curl -O https://archive.apache.org/dist/hadoop/common/KEYS
+# RUN gpg --import KEYS
 
-RUN gpg --import KEYS
-
-ENV HADOOP_VERSION 3.2.2
+ENV HADOOP_VERSION 3.2.3
 # ENV HADOOP_URL https://archive.apache.org/dist/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
 
-# https://mirrors.huaweicloud.com/apache/hadoop/common/hadoop-3.2.2/hadoop-3.2.2.tar.gz
+# https://mirrors.huaweicloud.com/apache/hadoop/common/hadoop-3.2.3/hadoop-3.2.3.tar.gz
 ENV HADOOP_URL https://mirrors.huaweicloud.com/apache/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
 
 RUN set -x \
