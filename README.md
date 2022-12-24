@@ -1,6 +1,8 @@
 # Changes
 ## 2022-12-24 
+- build version `2.0.0-hadoop3.2.2-java8`
 - build version `2.0.0-hadoop3.2.3-java8`
+- build version `2.0.0-hadoop3.2.4-java8`
 
 Version 2.0.0 introduces uses wait_for_it script for the cluster startup
 
@@ -53,10 +55,10 @@ If you need to extend some other configuration file, refer to base/entrypoint.sh
 make -f Makefile;
 docker compose up;
 
-docker run -it --network=docker-hadoop_default --env-file=hadoop.env --rm geekyouth/hadoop-submit:2.0.0-hadoop3.2.3-java8 /bin/bash
+docker run -it --network=docker-hadoop_default --env-file=hadoop.env --rm geekyouth/hadoop-submit:2.0.0-hadoop3.2.4-java8 /bin/bash
 
 hdfs dfs -mkdir -p /input; \
-hdfs dfs -put /opt/hadoop-3.2.3/README.txt /input; \
+hdfs dfs -put /opt/hadoop-3.2.4/README.txt /input; \
 hadoop jar /opt/hadoop/applications/WordCount.jar WordCount /input /output; \
 hdfs dfs -cat /output/*
 
