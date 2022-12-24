@@ -2,12 +2,12 @@ version: "3"
 
 services:
   namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    image: geekyouth/hadoop-namenode:2.0.0-hadoop3.2.2-java8
     container_name: namenode
-    restart: always
+    restart: unless-stopped
     ports:
-      - 9870:9870
-      - 9000:9000
+      - "9870:9870"
+      - "8020:8020"
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
     environment:
@@ -16,9 +16,13 @@ services:
       - ./hadoop.env
 
   datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    image: geekyouth/hadoop-datanode:2.0.0-hadoop3.2.2-java8
     container_name: datanode
-    restart: always
+    depends_on:
+      - namenode
+    restart: unless-stopped
+    ports:
+      - "9864:9864"
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
     environment:
@@ -27,29 +31,46 @@ services:
       - ./hadoop.env
   
   resourcemanager:
-    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    image: geekyouth/hadoop-resourcemanager:2.0.0-hadoop3.2.2-java8
     container_name: resourcemanager
-    restart: always
+    depends_on:
+      - namenode
+      - datanode
+    restart: unless-stopped
+    ports:
+      - "8088:8088"
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+      SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864"
     env_file:
       - ./hadoop.env
 
   nodemanager1:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    image: geekyouth/hadoop-nodemanager:2.0.0-hadoop3.2.2-java8
     container_name: nodemanager
-    restart: always
+    depends_on:
+      - namenode
+      - datanode
+      - resourcemanager
+    restart: unless-stopped
+    ports:
+      - "8042:8042"
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
       - ./hadoop.env
   
   historyserver:
-    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+    image: geekyouth/hadoop-historyserver:2.0.0-hadoop3.2.2-java8
     container_name: historyserver
-    restart: always
+    restart: unless-stopped
+    depends_on:
+      - namenode
+      - datanode
+      - resourcemanager
+    ports:
+      - "8188:8188"
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864 resourcemanager:8088"
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:

@@ -1,0 +1,25 @@
+name: build docker image and push to docker hub
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+#  release:
+#    types: [ created ]
+#  schedule:
+#    - cron: "0 2 * * MON-FRI" # Runs at 02:00 UTC
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: build and push
+        # https://www.freecodecamp.org/news/a-lightweight-tool-agnostic-ci-cd-flow-with-github-actions/
+        # https://stackoverflow.com/questions/66918575/how-to-use-your-own-makefile-in-github-actions
+        env:
+          DOCKER_TOKEN_RW: ${{ secrets.DOCKER_TOKEN_RW }}
+          MY_GITHUB_DOCER_CI_TOKEN: ${{ secrets.MY_GITHUB_DOCER_CI_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: make build push
