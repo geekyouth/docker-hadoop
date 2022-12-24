@@ -2,7 +2,7 @@ version: "3"
 
 services:
   namenode:
-    image: geekyouth/hadoop-namenode:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-namenode:2.0.0-hadoop2.10.2-java8
     container_name: namenode
     hostname: namenode
     restart: unless-stopped
@@ -17,7 +17,7 @@ services:
       - ./hadoop.env
 
   datanode:
-    image: geekyouth/hadoop-datanode:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-datanode:2.0.0-hadoop2.10.2-java8
     container_name: datanode
     hostname: datanode
     depends_on:
@@ -33,7 +33,7 @@ services:
       - ./hadoop.env
 
   resourcemanager:
-    image: geekyouth/hadoop-resourcemanager:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-resourcemanager:2.0.0-hadoop2.10.2-java8
     container_name: resourcemanager
     hostname: resourcemanager
     depends_on:
@@ -48,7 +48,7 @@ services:
       - ./hadoop.env
 
   nodemanager1:
-    image: geekyouth/hadoop-nodemanager:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-nodemanager:2.0.0-hadoop2.10.2-java8
     container_name: nodemanager
     hostname: nodemanager
     depends_on:
@@ -64,7 +64,7 @@ services:
       - ./hadoop.env
 
   historyserver:
-    image: geekyouth/hadoop-historyserver:2.0.0-hadoop3.0.1-java8
+    image: geekyouth/hadoop-historyserver:2.0.0-hadoop2.10.2-java8
     container_name: historyserver
     hostname: historyserver
     restart: unless-stopped

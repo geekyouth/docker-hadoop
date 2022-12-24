@@ -1,4 +1,4 @@
-FROM geekyouth/hadoop-base:2.0.0-hadoop3.0.1-java8
+FROM geekyouth/hadoop-base:2.0.0-hadoop2.10.2-java8
 
 LABEL MAINTAINER=https://github.com/geekyouth/docker-hadoop
 
@@ -12,5 +12,6 @@ ADD run.sh /run.sh
 RUN chmod a+x /run.sh
 
 EXPOSE 8188
+EXPOSE 19888
 
 CMD ["/run.sh"]
