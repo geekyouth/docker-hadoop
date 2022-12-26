@@ -2,7 +2,7 @@ FROM geekyouth/docker-hadoop:base-h{HADOOP_VERSION}-java8-3.0.0
 
 LABEL MAINTAINER=https://github.com/geekyouth/docker-hadoop
 
-ENV JAR_FILEPATH="$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.4.jar"
+ENV JAR_FILEPATH="$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-{HADOOP_VERSION}.jar"
 ENV CLASS_TO_RUN="wordcount"
 
 ADD run.sh /run.sh
