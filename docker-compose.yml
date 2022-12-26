@@ -1,8 +1,6 @@
 services:
   namenode:
-    # image: geekyouth/hadoop-namenode:2.0.0-hadoop3.1.4-java8
-    build:
-      context: ./namenode
+    image: geekyouth/docker-hadoop:namenode-h3.1.4-java8-3.0.0
     container_name: namenode
     hostname: namenode
     restart: unless-stopped
@@ -17,12 +15,12 @@ services:
       - ./hadoop.env
 
   datanode:
-    # image: geekyouth/hadoop-datanode:2.0.0-hadoop3.1.4-java8
-    build:
-      context: ./datanode
+    image: geekyouth/docker-hadoop:datanode-h3.1.4-java8-3.0.0
     container_name: datanode
     hostname: datanode
     restart: unless-stopped
+    depends_on:
+      - namenode
     ports:
       - "9864:9864" # http://datanode:9864
     volumes:
@@ -32,9 +30,7 @@ services:
     env_file: *env_file
 
   resourcemanager:
-    # image: geekyouth/hadoop-resourcemanager:2.0.0-hadoop3.1.4-java8
-    build:
-      context: ./resourcemanager
+    image: geekyouth/docker-hadoop:resourcemanager-h3.1.4-java8-3.0.0
     container_name: resourcemanager
     hostname: resourcemanager
     restart: unless-stopped
@@ -48,9 +44,7 @@ services:
     env_file: *env_file
 
   nodemanager:
-    # image: geekyouth/hadoop-nodemanager:2.0.0-hadoop3.1.4-java8
-    build:
-      context: ./nodemanager
+    image: geekyouth/docker-hadoop:nodemanager-h3.1.4-java8-3.0.0
     container_name: nodemanager
     hostname: nodemanager
     restart: unless-stopped
@@ -65,9 +59,7 @@ services:
     env_file: *env_file
   
   historyserver:
-    # image: geekyouth/hadoop-historyserver:2.0.0-hadoop3.1.4-java8
-    build:
-      context: ./historyserver
+    image: geekyouth/docker-hadoop:historyserver-h3.1.4-java8-3.0.0
     container_name: historyserver
     hostname: historyserver
     restart: unless-stopped
@@ -85,9 +77,7 @@ services:
     env_file: *env_file
 
   test_submit:
-    # image: geekyouth/hadoop-submit:2.0.0-hadoop3.1.4-java8
-    build:
-      context: ./submit
+    image: geekyouth/docker-hadoop:submit-h3.1.4-java8-3.0.0
     container_name: test_submit
     hostname: test_submit
     depends_on:
