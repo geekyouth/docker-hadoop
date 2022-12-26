@@ -1,82 +1,101 @@
-version: "3"
-
 services:
   namenode:
-    image: geekyouth/hadoop-namenode:2.0.0-hadoop3.1.4-java8
+    # image: geekyouth/hadoop-namenode:2.0.0-hadoop3.1.4-java8
+    build:
+      context: ./namenode
     container_name: namenode
+    hostname: namenode
     restart: unless-stopped
     ports:
-      - "9870:9870"
-      - "8020:8020"
+      - "9870:9870" # http://namenode:9870
+      - "8020:8020" # hdfs://namenode:8020
     volumes:
-      - hadoop_namenode:/hadoop/dfs/name
+      - ./.data/hadoop_namenode:/hadoop/dfs/name
     environment:
       - CLUSTER_NAME=test
-    env_file:
+    env_file: &env_file
       - ./hadoop.env
 
   datanode:
-    image: geekyouth/hadoop-datanode:2.0.0-hadoop3.1.4-java8
+    # image: geekyouth/hadoop-datanode:2.0.0-hadoop3.1.4-java8
+    build:
+      context: ./datanode
     container_name: datanode
-    depends_on:
-      - namenode
+    hostname: datanode
     restart: unless-stopped
     ports:
-      - "9864:9864"
+      - "9864:9864" # http://datanode:9864
     volumes:
-      - hadoop_datanode:/hadoop/dfs/data
+      - ./.data/hadoop_datanode:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
-    env_file:
-      - ./hadoop.env
-  
+    env_file: *env_file
+
   resourcemanager:
-    image: geekyouth/hadoop-resourcemanager:2.0.0-hadoop3.1.4-java8
+    # image: geekyouth/hadoop-resourcemanager:2.0.0-hadoop3.1.4-java8
+    build:
+      context: ./resourcemanager
     container_name: resourcemanager
+    hostname: resourcemanager
+    restart: unless-stopped
     depends_on:
       - namenode
       - datanode
-    restart: unless-stopped
     ports:
-      - "8088:8088"
+      - "8088:8088" # http://resourcemanager:8088
     environment:
       SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864"
-    env_file:
-      - ./hadoop.env
+    env_file: *env_file
 
-  nodemanager1:
-    image: geekyouth/hadoop-nodemanager:2.0.0-hadoop3.1.4-java8
+  nodemanager:
+    # image: geekyouth/hadoop-nodemanager:2.0.0-hadoop3.1.4-java8
+    build:
+      context: ./nodemanager
     container_name: nodemanager
+    hostname: nodemanager
+    restart: unless-stopped
     depends_on:
       - namenode
       - datanode
       - resourcemanager
-    restart: unless-stopped
     ports:
-      - "8042:8042"
+      - "8042:8042" # http://nodemanager:8042
     environment:
       SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864 resourcemanager:8088"
-    env_file:
-      - ./hadoop.env
+    env_file: *env_file
   
   historyserver:
-    image: geekyouth/hadoop-historyserver:2.0.0-hadoop3.1.4-java8
+    # image: geekyouth/hadoop-historyserver:2.0.0-hadoop3.1.4-java8
+    build:
+      context: ./historyserver
     container_name: historyserver
+    hostname: historyserver
     restart: unless-stopped
     depends_on:
       - namenode
       - datanode
       - resourcemanager
+      - nodemanager
     ports:
-      - "8188:8188"
+      - "8188:8188" # http://historyserver:8188
     environment:
-      SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864 resourcemanager:8088 nodemanager:8042"
     volumes:
-      - hadoop_historyserver:/hadoop/yarn/timeline
-    env_file:
-      - ./hadoop.env
-  
-volumes:
-  hadoop_namenode:
-  hadoop_datanode:
-  hadoop_historyserver:
+      - ./.data/hadoop_historyserver:/hadoop/yarn/timeline
+    env_file: *env_file
+
+  test_submit:
+    # image: geekyouth/hadoop-submit:2.0.0-hadoop3.1.4-java8
+    build:
+      context: ./submit
+    container_name: test_submit
+    hostname: test_submit
+    depends_on:
+      - namenode
+      - datanode
+      - resourcemanager
+      - nodemanager
+      - historyserver
+    environment:
+      SERVICE_PRECONDITION: "namenode:8020 namenode:9870 datanode:9864 resourcemanager:8088 nodemanager:8042 historyserver:8188"
+    env_file: *env_file
