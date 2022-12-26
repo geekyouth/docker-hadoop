@@ -1,4 +1,4 @@
-FROM geekyouth/hadoop-base:2.0.0-hadoop3.1.4-java8
+FROM geekyouth/hadoop-base:2.0.0-hadoop{HADOOP_VERSION}-java8
 
 LABEL MAINTAINER=https://github.com/geekyouth/docker-hadoop
 
@@ -9,3 +9,5 @@ ADD run.sh /run.sh
 RUN chmod a+x /run.sh
 
 CMD ["/run.sh"]
+
+# docker build -t geekyouth/docker-hadoop:submit-h3.1.4-java8-3.0.0 .

@@ -1,4 +1,4 @@
-FROM geekyouth/hadoop-base:2.0.0-hadoop3.1.4-java8
+FROM geekyouth/docker-hadoop:base-h{HADOOP_VERSION}-java8-3.0.0
 
 LABEL MAINTAINER=https://github.com/geekyouth/docker-hadoop
 
@@ -14,3 +14,5 @@ RUN chmod a+x /run.sh
 EXPOSE 9870
 
 CMD ["/run.sh"]
+
+# docker build -t geekyouth/docker-hadoop:namenode-h3.1.4-java8-3.0.0 .

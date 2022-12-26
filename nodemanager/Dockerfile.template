@@ -1,4 +1,4 @@
-FROM geekyouth/hadoop-base:2.0.0-hadoop3.1.4-java8
+FROM geekyouth/hadoop-base:2.0.0-hadoop{HADOOP_VERSION}-java8
 
 LABEL MAINTAINER=https://github.com/geekyouth/docker-hadoop
 
@@ -10,3 +10,5 @@ RUN chmod a+x /run.sh
 EXPOSE 8042
 
 CMD ["/run.sh"]
+
+# docker build -t geekyouth/docker-hadoop:nodemanager-h3.1.4-java8-3.0.0 .
