@@ -12,6 +12,14 @@
 - build version `2.0.0-hadoop3.3.3-java8`
 - build version `2.0.0-hadoop3.3.4-java8`
 
+## 2022-12-26
+- `./docker-compose.yml` docker compose build and up/restart 挂载 .data/ 目录，反复测试已保证 HDFS数据 + YARN日志 复用
+- `./submit/run.sh` 生成临时目录（"yyyymmdd-hhmmss.SSS"），防止已存在的目录导致任务失败
+- `./submit` 补充一个完整的单元测试
+- `./resourcemanager` 等待 hdfs 自动退出安全模式，防止 resourcemanager 报错
+- `./historyserver` historyserver 升级为 timelineserver
+- `./.doc` 补充 hadoop stack 兼容性报告
+
 Version 2.0.0 introduces uses wait_for_it script for the cluster startup
 
 # Hadoop Docker
@@ -80,3 +88,9 @@ hdfs dfs -rm -r -f /output
 - Resource manager: <http://127.0.0.1:8088>
 - Nodemanager: <http://127.0.0.1:8042>
 - History server: <http://127.0.0.1:8188>
+
+# hosts:
+```
+127.0.0.1 namenode datanode resourcemanager nodemanager historyserver
+
+```
