@@ -1,4 +1,4 @@
-FROM geekyouth/hadoop-base:2.0.0-hadoop{HADOOP_VERSION}-java8
+FROM geekyouth/hadoop-base:2.0.0-hadoop{HADOOP_VERSION}-java8-3.0.0
 
 LABEL MAINTAINER=https://github.com/geekyouth/docker-hadoop
 
