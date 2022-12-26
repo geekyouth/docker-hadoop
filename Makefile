@@ -18,19 +18,19 @@ build_modules:
 	for HADOOP_VERSION in $(HADOOP_VERSIONS) ; do \
 		echo "===================> Push for Hadoop-$${HADOOP_VERSION} with java$(JAVA_VERSION)" ; \
 		docker login -u geekyouth -p $(DOCKER_TOKEN_RW); \
-		sed -i "s/{HADOOP_VERSION}/$${HADOOP_VERSION}/g" */*.template; \
+		sed -i "s/{HADOOP_VERSION}/$${HADOOP_VERSION}/g" */Dockerfile; \
 		docker build -t geekyouth/docker-hadoop:namenode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
-				-t ghcr.io/geekyouth/docker-hadoop:namenode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./namenode/Dockerfile.template; \
+				-t ghcr.io/geekyouth/docker-hadoop:namenode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) ./namenode; \
 		docker build -t geekyouth/docker-hadoop:datanode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
-				-t ghcr.io/geekyouth/docker-hadoop:datanode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./datanode/Dockerfile.template; \
+				-t ghcr.io/geekyouth/docker-hadoop:datanode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) ./datanode; \
 		docker build -t geekyouth/docker-hadoop:resourcemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
-				-t ghcr.io/geekyouth/docker-hadoop:resourcemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./resourcemanager/Dockerfile.template; \
+				-t ghcr.io/geekyouth/docker-hadoop:resourcemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) ./resourcemanager; \
 		docker build -t geekyouth/docker-hadoop:nodemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
-				-t ghcr.io/geekyouth/docker-hadoop:nodemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./nodemanager/Dockerfile.template; \
+				-t ghcr.io/geekyouth/docker-hadoop:nodemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) ./nodemanager; \
 		docker build -t geekyouth/docker-hadoop:historyserver-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
-				-t ghcr.io/geekyouth/docker-hadoop:historyserver-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./historyserver/Dockerfile.template; \
+				-t ghcr.io/geekyouth/docker-hadoop:historyserver-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) ./historyserver; \
 		docker build -t geekyouth/docker-hadoop:submit-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
-				-t ghcr.io/geekyouth/docker-hadoop:submit-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./submit/Dockerfile.template; \
+				-t ghcr.io/geekyouth/docker-hadoop:submit-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) ./submit; \
     	docker push geekyouth/docker-hadoop:namenode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
     	docker push geekyouth/docker-hadoop:datanode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
     	docker push geekyouth/docker-hadoop:resourcemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
