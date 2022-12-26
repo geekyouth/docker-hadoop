@@ -1,38 +1,49 @@
-DOCKER_NETWORK = docker-hadoop_default
-ENV_FILE = hadoop.env
-current_branch := $(shell git rev-parse --abbrev-ref HEAD)
-build:
-	docker build -t geekyouth/hadoop-base:$(current_branch) ./base
-	docker build -t geekyouth/hadoop-namenode:$(current_branch) ./namenode
-	docker build -t geekyouth/hadoop-datanode:$(current_branch) ./datanode
-	docker build -t geekyouth/hadoop-resourcemanager:$(current_branch) ./resourcemanager
-	docker build -t geekyouth/hadoop-nodemanager:$(current_branch) ./nodemanager
-	docker build -t geekyouth/hadoop-historyserver:$(current_branch) ./historyserver
-	docker build -t geekyouth/hadoop-submit:$(current_branch) ./submit
+HADOOP_VERSIONS = 3.3.4 3.3.3 3.3.2 3.3.1 3.3.0 3.2.4 3.2.3 3.2.2 3.2.1 3.2.0 3.1.4 3.1.3 3.1.2 3.1.1 3.1.0 3.0.3 3.0.2 3.0.1 3.0.0
+PROJECT_VERSION = 3.0.0
+JAVA_VERSION = 8
 
-push:
-	docker login -u geekyouth -p $(DOCKER_TOKEN_RW)
-	docker push geekyouth/hadoop-base:$(current_branch)
-	docker push geekyouth/hadoop-namenode:$(current_branch)
-	docker push geekyouth/hadoop-datanode:$(current_branch)
-	docker push geekyouth/hadoop-resourcemanager:$(current_branch)
-	docker push geekyouth/hadoop-nodemanager:$(current_branch)
-	docker push geekyouth/hadoop-historyserver:$(current_branch)
-	docker push geekyouth/hadoop-submit:$(current_branch)
-	docker login -u geekyouth -p $(GITHUB_TOKEN) ghcr.io
-	docker tag geekyouth/hadoop-base:$(current_branch) ghcr.io/geekyouth/hadoop-base:$(current_branch)
-	docker tag geekyouth/hadoop-namenode:$(current_branch) ghcr.io/geekyouth/hadoop-namenode:$(current_branch)
-	docker tag geekyouth/hadoop-datanode:$(current_branch) ghcr.io/geekyouth/hadoop-datanode:$(current_branch)
-	docker tag geekyouth/hadoop-resourcemanager:$(current_branch) ghcr.io/geekyouth/hadoop-resourcemanager:$(current_branch)
-	docker tag geekyouth/hadoop-nodemanager:$(current_branch) ghcr.io/geekyouth/hadoop-nodemanager:$(current_branch)
-	docker tag geekyouth/hadoop-historyserver:$(current_branch) ghcr.io/geekyouth/hadoop-historyserver:$(current_branch)
-	docker tag geekyouth/hadoop-submit:$(current_branch) ghcr.io/geekyouth/hadoop-submit:$(current_branch)
-	docker push ghcr.io/geekyouth/hadoop-base:$(current_branch)
-	docker push ghcr.io/geekyouth/hadoop-namenode:$(current_branch)
-	docker push ghcr.io/geekyouth/hadoop-datanode:$(current_branch)
-	docker push ghcr.io/geekyouth/hadoop-resourcemanager:$(current_branch)
-	docker push ghcr.io/geekyouth/hadoop-nodemanager:$(current_branch)
-	docker push ghcr.io/geekyouth/hadoop-historyserver:$(current_branch)
-	docker push ghcr.io/geekyouth/hadoop-submit:$(current_branch)
+build_base:
+	for HADOOP_VERSION in $(HADOOP_VERSIONS) ; do \
+		echo "===================> Build for Hadoop-$${HADOOP_VERSION} with java$(JAVA_VERSION)" ; \
+		docker login -u geekyouth -p $(DOCKER_TOKEN_RW); \
+		docker build --build-arg HADOOP_VERSION=$${HADOOP_VERSION} \
+				-t geekyouth/docker-hadoop:base-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
+				-t ghcr.io/geekyouth/docker-hadoop:base-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) ./base; \
+        docker push geekyouth/docker-hadoop:base-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+		docker login -u geekyouth -p $(GITHUB_TOKEN) ghcr.io; \
+		docker push ghcr.io/geekyouth/docker-hadoop:base-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+	done
+
+build_modules:
+	for HADOOP_VERSION in $(HADOOP_VERSIONS) ; do \
+		echo "===================> Push for Hadoop-$${HADOOP_VERSION} with java$(JAVA_VERSION)" ; \
+		docker login -u geekyouth -p $(DOCKER_TOKEN_RW); \
+		sed -i "s/{HADOOP_VERSION}/$${HADOOP_VERSION}/g" */*.template; \
+		docker build -t geekyouth/docker-hadoop:namenode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
+				-t ghcr.io/geekyouth/docker-hadoop:namenode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./namenode/Dockerfile.template; \
+		docker build -t geekyouth/docker-hadoop:datanode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
+				-t ghcr.io/geekyouth/docker-hadoop:datanode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./datanode/Dockerfile.template; \
+		docker build -t geekyouth/docker-hadoop:resourcemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
+				-t ghcr.io/geekyouth/docker-hadoop:resourcemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./resourcemanager/Dockerfile.template; \
+		docker build -t geekyouth/docker-hadoop:nodemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
+				-t ghcr.io/geekyouth/docker-hadoop:nodemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./nodemanager/Dockerfile.template; \
+		docker build -t geekyouth/docker-hadoop:historyserver-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
+				-t ghcr.io/geekyouth/docker-hadoop:historyserver-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./historyserver/Dockerfile.template; \
+		docker build -t geekyouth/docker-hadoop:submit-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
+				-t ghcr.io/geekyouth/docker-hadoop:submit-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) -f ./submit/Dockerfile.template; \
+    	docker push geekyouth/docker-hadoop:namenode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push geekyouth/docker-hadoop:datanode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push geekyouth/docker-hadoop:resourcemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push geekyouth/docker-hadoop:nodemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push geekyouth/docker-hadoop:historyserver-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push geekyouth/docker-hadoop:submit-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker login -u geekyouth -p $(GITHUB_TOKEN) ghcr.io; \
+    	docker push ghcr.io/geekyouth/docker-hadoop:namenode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push ghcr.io/geekyouth/docker-hadoop:datanode-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push ghcr.io/geekyouth/docker-hadoop:resourcemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push ghcr.io/geekyouth/docker-hadoop:nodemanager-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push ghcr.io/geekyouth/docker-hadoop:historyserver-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+    	docker push ghcr.io/geekyouth/docker-hadoop:submit-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+	done
 
 # make build push
