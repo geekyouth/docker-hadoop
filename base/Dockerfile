@@ -1,7 +1,7 @@
 FROM debian:9
 
 LABEL MAINTAINER=https://github.com/geekyouth/docker-hadoop
-
+ENV TZ=Asia/Shanghai
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     openjdk-8-jdk \
     net-tools \
