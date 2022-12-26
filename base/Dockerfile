@@ -24,12 +24,12 @@ RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 RUN gpg --import KEYS
 
 RUN set -x \
-    && curl -fSL "$MIRROR_URL" -o /tmp/hadoop.tar.gz || \
-    curl -fSL "$HADOOP_URL" -o /tmp/hadoop.tar.gz; \
-    curl -fSL "$HADOOP_URL.asc" -o /tmp/hadoop.tar.gz.asc \
+    && curl -fsSL "$MIRROR_URL" -o /tmp/hadoop.tar.gz || \
+    curl -fsSL "$HADOOP_URL" -o /tmp/hadoop.tar.gz; \
+    curl -fsSL "$HADOOP_URL.asc" -o /tmp/hadoop.tar.gz.asc \
     && gpg --verify /tmp/hadoop.tar.gz.asc \
-    && tar -xvf /tmp/hadoop.tar.gz -C /opt/ \
-    && rm /tmp/hadoop.tar.gz*
+    && tar -xf /tmp/hadoop.tar.gz -C /opt/ \
+    && rm -rf /tmp/hadoop.tar.gz*
 
 # RUN ln -s /opt/hadoop-$HADOOP_VERSION/etc/hadoop /etc/hadoop
 
