@@ -1,6 +1,14 @@
 # Changes
 ## 2022-12-24 
-- 💘 build version `2.0.0-hadoop3.1.4-java8` 💘
+- build version `2.0.0-hadoop2.10.2-java8`
+- build version `2.0.0-hadoop3.0.1-java8`
+- build version `2.0.0-hadoop3.0.2-java8`
+- build version `2.0.0-hadoop3.0.3-java8`
+- build version `2.0.0-hadoop3.1.0-java8`
+- build version `2.0.0-hadoop3.1.1-java8`
+- build version `2.0.0-hadoop3.1.2-java8`
+- build version `2.0.0-hadoop3.1.3-java8`
+- build version `2.0.0-hadoop3.1.4-java8` 💘💘💘
 - build version `2.0.0-hadoop3.2.0-java8`
 - build version `2.0.0-hadoop3.2.1-java8`
 - build version `2.0.0-hadoop3.2.2-java8`
