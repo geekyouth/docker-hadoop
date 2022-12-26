@@ -3,6 +3,7 @@ name: build docker image and push to docker hub
 on:
   push:
     branches:
+      - V3
       - 2.0.0-hadoop2.10.2-java
       - 2.0.0-hadoop3.0.1-java8
       - 2.0.0-hadoop3.0.2-java8
@@ -27,6 +28,7 @@ on:
       - "**/.doc"
   pull_request:
     branches:
+      - V3
       - 2.0.0-hadoop2.10.2-java
       - 2.0.0-hadoop3.0.1-java8
       - 2.0.0-hadoop3.0.2-java8
@@ -66,4 +68,4 @@ jobs:
           DOCKER_TOKEN_RW: ${{ secrets.DOCKER_TOKEN_RW }}
           MY_GITHUB_DOCER_CI_TOKEN: ${{ secrets.MY_GITHUB_DOCER_CI_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: make build push
+        run: make -f Makefile build_base build_modules
