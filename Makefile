@@ -46,4 +46,4 @@ build_modules:
     	docker push ghcr.io/geekyouth/docker-hadoop:submit-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
 	done
 
-# make build push
+# make build_base build_modules
