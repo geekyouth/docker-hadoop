@@ -11,4 +11,4 @@ EXPOSE 8042
 
 CMD ["/run.sh"]
 
-# docker build -t geekyouth/docker-hadoop:nodemanager-h3.1.4-java8-3.0.0 .
+# docker build -t geekyouth/docker-hadoop:nodemanager-h3.1.4-java8-3.0.0 ./nodemanager

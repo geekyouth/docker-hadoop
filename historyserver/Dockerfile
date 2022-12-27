@@ -15,4 +15,4 @@ EXPOSE 8188
 
 CMD ["/run.sh"]
 
-# docker build -t geekyouth/docker-hadoop:historyserver-h3.1.4-java8-3.0.0 .
+# docker build -t geekyouth/docker-hadoop:historyserver-h3.1.4-java8-3.0.0 ./historyserver

@@ -10,4 +10,4 @@ RUN chmod a+x /run.sh
 
 CMD ["/run.sh"]
 
-# docker build -t geekyouth/docker-hadoop:submit-h3.1.4-java8-3.0.0 .
+# docker build -t geekyouth/docker-hadoop:submit-h3.1.4-java8-3.0.0 ./submit
