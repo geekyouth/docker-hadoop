@@ -1,9 +1,11 @@
 services:
   namenode:
     image: geekyouth/docker-hadoop:namenode-h3.1.4-java8-3.0.0
+#    build:
+#      context: ./namenode
     container_name: namenode
     hostname: namenode
-    restart: unless-stopped
+    # restart: unless-stopped
     ports:
       - "9870:9870" # http://namenode:9870
       - "8020:8020" # hdfs://namenode:8020
@@ -16,9 +18,11 @@ services:
 
   datanode:
     image: geekyouth/docker-hadoop:datanode-h3.1.4-java8-3.0.0
+#    build:
+#      context: ./datanode
     container_name: datanode
     hostname: datanode
-    restart: unless-stopped
+    # restart: unless-stopped
     depends_on:
       - namenode
     ports:
@@ -31,9 +35,11 @@ services:
 
   resourcemanager:
     image: geekyouth/docker-hadoop:resourcemanager-h3.1.4-java8-3.0.0
+#    build:
+#      context: ./resourcemanager
     container_name: resourcemanager
     hostname: resourcemanager
-    restart: unless-stopped
+    # restart: unless-stopped
     depends_on:
       - namenode
       - datanode
@@ -45,9 +51,11 @@ services:
 
   nodemanager:
     image: geekyouth/docker-hadoop:nodemanager-h3.1.4-java8-3.0.0
+#    build:
+#      context: ./nodemanager
     container_name: nodemanager
     hostname: nodemanager
-    restart: unless-stopped
+    # restart: unless-stopped
     depends_on:
       - namenode
       - datanode
@@ -60,9 +68,11 @@ services:
   
   historyserver:
     image: geekyouth/docker-hadoop:historyserver-h3.1.4-java8-3.0.0
+#    build:
+#      context: ./historyserver
     container_name: historyserver
     hostname: historyserver
-    restart: unless-stopped
+    # restart: unless-stopped
     depends_on:
       - namenode
       - datanode
@@ -78,6 +88,8 @@ services:
 
   test_submit:
     image: geekyouth/docker-hadoop:submit-h3.1.4-java8-3.0.0
+#    build:
+#      context: ./submit
     container_name: test_submit
     hostname: test_submit
     depends_on:
