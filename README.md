@@ -2,6 +2,9 @@
 - <https://hub.docker.com/r/geekyouth/docker-hadoop>
 - <https://github.com/geekyouth/docker-hadoop/pkgs/container/docker-hadoop/versions>
 
+# github action
+- <https://github.com/geekyouth/docker-hadoop/actions>
+
 # Changes
 ## 2022-12-24 
 - build version `2.0.0-hadoop2.10.2-java8`
@@ -31,6 +34,13 @@
 - `./resourcemanager` 等待 hdfs 自动退出安全模式，防止 resourcemanager 报错
 - `./historyserver` historyserver 升级为 timelineserver
 - `./.doc` 补充 hadoop stack 兼容性报告
+
+# 2022-12-27
+- `./base` 1、取消华为镜像下载站，只从官网下载；2、恢复软连接 /etc/hadoop； 3、静默执行命令； 4、取消执行 mkdir /hadoop-data；5、减少不必要的日志；
+- `Dockerfile` 使用命令批量替换模板中的版本号
+- 修改时区为上海 
+
+---
 
 Version 2.0.0 introduces uses wait_for_it script for the cluster startup
 
@@ -83,7 +93,7 @@ If you need to extend some other configuration file, refer to base/entrypoint.sh
 make -f Makefile;
 docker compose up;
 
-docker run -it --network=docker-hadoop_default --env-file=hadoop.env --rm geekyouth/hadoop-submit:2.0.0-hadoop3.1.4-java8 /bin/bash
+docker run -it -p 9870:9870 --network=docker-hadoop_default --env-file=hadoop.env geekyouth/hadoop-submit:2.0.0-hadoop3.1.4-java8 /bin/bash
 
 hdfs dfs -mkdir -p /input; \
 hdfs dfs -put /opt/hadoop-3.1.4/README.txt /input; \
@@ -104,5 +114,22 @@ hdfs dfs -rm -r -f /output
 # hosts:
 ```
 127.0.0.1 namenode datanode resourcemanager nodemanager historyserver
+
+```
+
+# TODO
+```
+build_base:
+	for HADOOP_VERSION in $(HADOOP_VERSIONS) ; do \
+		docker pull geekyouth/docker-hadoop:base-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) && echo Builded DONE!!! || \
+			echo "===================> Building for Hadoop-$${HADOOP_VERSION} with java$(JAVA_VERSION)" && \
+			docker login -u geekyouth -p $(DOCKER_TOKEN_RW) && \
+			docker build --build-arg HADOOP_VERSION=$${HADOOP_VERSION} \
+					-t geekyouth/docker-hadoop:base-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) \
+					-t ghcr.io/geekyouth/docker-hadoop:base-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) ./base && \
+			docker push geekyouth/docker-hadoop:base-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION) && \
+			docker login -u geekyouth -p $(GITHUB_TOKEN) ghcr.io && \
+			docker push ghcr.io/geekyouth/docker-hadoop:base-h$${HADOOP_VERSION}-java$(JAVA_VERSION)-$(PROJECT_VERSION); \
+	done
 
 ```
