@@ -1,3 +1,4 @@
+# https://rhysd.github.io/actionlint/ 在线检查
 name: build docker image and push to docker hub
 
 on:
@@ -26,6 +27,8 @@ on:
     paths-ignore:
       - "**/README.md"
       - "**/.doc/"
+      - ".gitignore"
+      - "hadoop.env"
   pull_request:
     branches:
       - V3
@@ -51,6 +54,9 @@ on:
     paths-ignore:
       - "**/README.md"
       - "**/.doc/"
+      - ".gitignore"
+      - "hadoop.env"
+
 #  release:
 #    types: [ created ]
 #  schedule:
