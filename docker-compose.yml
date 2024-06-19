@@ -1,6 +1,6 @@
 services:
   namenode:
-    image: ghcr.io/geekyouth/docker-hadoop:namenode-h3.3.4-java8-3.0.0
+    image: ghcr.io/geekyouth/docker-hadoop:namenode-h3.3.4-java8
 #    build:
 #      context: ./namenode
     container_name: namenode
@@ -17,7 +17,7 @@ services:
       - ./hadoop.env
 
   datanode:
-    image: ghcr.io/geekyouth/docker-hadoop:datanode-h3.3.4-java8-3.0.0
+    image: ghcr.io/geekyouth/docker-hadoop:datanode-h3.3.4-java8
 #    build:
 #      context: ./datanode
     container_name: datanode
@@ -34,7 +34,7 @@ services:
     env_file: *env_file
 
   resourcemanager:
-    image: ghcr.io/geekyouth/docker-hadoop:resourcemanager-h3.3.4-java8-3.0.0
+    image: ghcr.io/geekyouth/docker-hadoop:resourcemanager-h3.3.4-java8
 #    build:
 #      context: ./resourcemanager
     container_name: resourcemanager
@@ -50,7 +50,7 @@ services:
     env_file: *env_file
 
   nodemanager:
-    image: ghcr.io/geekyouth/docker-hadoop:nodemanager-h3.3.4-java8-3.0.0
+    image: ghcr.io/geekyouth/docker-hadoop:nodemanager-h3.3.4-java8
 #    build:
 #      context: ./nodemanager
     container_name: nodemanager
@@ -67,7 +67,7 @@ services:
     env_file: *env_file
   
   historyserver:
-    image: ghcr.io/geekyouth/docker-hadoop:historyserver-h3.3.4-java8-3.0.0
+    image: ghcr.io/geekyouth/docker-hadoop:historyserver-h3.3.4-java8
 #    build:
 #      context: ./historyserver
     container_name: historyserver
@@ -87,7 +87,7 @@ services:
     env_file: *env_file
 
   test_submit:
-    image: ghcr.io/geekyouth/docker-hadoop:submit-h3.3.4-java8-3.0.0
+    image: ghcr.io/geekyouth/docker-hadoop:submit-h3.3.4-java8
 #    build:
 #      context: ./submit
     container_name: test_submit
