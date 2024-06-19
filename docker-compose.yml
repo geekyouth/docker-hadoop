@@ -1,8 +1,8 @@
 services:
   namenode:
     image: ghcr.io/geekyouth/docker-hadoop:namenode-h3.3.4-java8-3.0.0
-    build:
-      context: ./namenode
+#    build:
+#      context: ./namenode
     container_name: namenode
     hostname: namenode
     # restart: unless-stopped
@@ -18,8 +18,8 @@ services:
 
   datanode:
     image: ghcr.io/geekyouth/docker-hadoop:datanode-h3.3.4-java8-3.0.0
-    build:
-      context: ./datanode
+#    build:
+#      context: ./datanode
     container_name: datanode
     hostname: datanode
     # restart: unless-stopped
@@ -35,8 +35,8 @@ services:
 
   resourcemanager:
     image: ghcr.io/geekyouth/docker-hadoop:resourcemanager-h3.3.4-java8-3.0.0
-    build:
-      context: ./resourcemanager
+#    build:
+#      context: ./resourcemanager
     container_name: resourcemanager
     hostname: resourcemanager
     # restart: unless-stopped
@@ -51,8 +51,8 @@ services:
 
   nodemanager:
     image: ghcr.io/geekyouth/docker-hadoop:nodemanager-h3.3.4-java8-3.0.0
-    build:
-      context: ./nodemanager
+#    build:
+#      context: ./nodemanager
     container_name: nodemanager
     hostname: nodemanager
     # restart: unless-stopped
@@ -68,8 +68,8 @@ services:
   
   historyserver:
     image: ghcr.io/geekyouth/docker-hadoop:historyserver-h3.3.4-java8-3.0.0
-    build:
-      context: ./historyserver
+#    build:
+#      context: ./historyserver
     container_name: historyserver
     hostname: historyserver
     # restart: unless-stopped
@@ -88,8 +88,8 @@ services:
 
   test_submit:
     image: ghcr.io/geekyouth/docker-hadoop:submit-h3.3.4-java8-3.0.0
-    build:
-      context: ./submit
+#    build:
+#      context: ./submit
     container_name: test_submit
     hostname: test_submit
     depends_on:
