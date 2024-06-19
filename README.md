@@ -6,6 +6,26 @@
 - <https://github.com/geekyouth/docker-hadoop/actions>
 
 # Changes
+## 2024-06-19
+```shell
+docker login ghcr.io -u geekyouth
+
+docker tag geekyouth/docker-hadoop:namenode-h3.3.4-java8-3.0.0 ghcr.io/geekyouth/docker-hadoop:namenode-h3.3.4-java8
+docker tag geekyouth/docker-hadoop:datanode-h3.3.4-java8-3.0.0 ghcr.io/geekyouth/docker-hadoop:datanode-h3.3.4-java8
+docker tag geekyouth/docker-hadoop:resourcemanager-h3.3.4-java8-3.0.0 ghcr.io/geekyouth/docker-hadoop:resourcemanager-h3.3.4-java8
+docker tag geekyouth/docker-hadoop:nodemanager-h3.3.4-java8-3.0.0 ghcr.io/geekyouth/docker-hadoop:nodemanager-h3.3.4-java8
+docker tag geekyouth/docker-hadoop:historyserver-h3.3.4-java8-3.0.0 ghcr.io/geekyouth/docker-hadoop:historyserver-h3.3.4-java8
+docker tag geekyouth/docker-hadoop:submit-h3.3.4-java8-3.0.0 ghcr.io/geekyouth/docker-hadoop:submit-h3.3.4-java8
+
+docker push ghcr.io/geekyouth/docker-hadoop:namenode-h3.3.4-java8
+docker push ghcr.io/geekyouth/docker-hadoop:datanode-h3.3.4-java8
+docker push ghcr.io/geekyouth/docker-hadoop:resourcemanager-h3.3.4-java8
+docker push ghcr.io/geekyouth/docker-hadoop:nodemanager-h3.3.4-java8
+docker push ghcr.io/geekyouth/docker-hadoop:historyserver-h3.3.4-java8
+docker push ghcr.io/geekyouth/docker-hadoop:submit-h3.3.4-java8
+
+```
+
 ## 2022-12-24 
 - build version `2.0.0-hadoop2.10.2-java8`
 - build version `2.0.0-hadoop3.0.1-java8`

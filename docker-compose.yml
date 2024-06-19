@@ -1,8 +1,8 @@
 services:
   namenode:
-    image: geekyouth/docker-hadoop:namenode-h3.1.4-java8-3.0.0
-#    build:
-#      context: ./namenode
+    image: ghcr.io/geekyouth/docker-hadoop:namenode-h3.3.4-java8-3.0.0
+    build:
+      context: ./namenode
     container_name: namenode
     hostname: namenode
     # restart: unless-stopped
@@ -17,9 +17,9 @@ services:
       - ./hadoop.env
 
   datanode:
-    image: geekyouth/docker-hadoop:datanode-h3.1.4-java8-3.0.0
-#    build:
-#      context: ./datanode
+    image: ghcr.io/geekyouth/docker-hadoop:datanode-h3.3.4-java8-3.0.0
+    build:
+      context: ./datanode
     container_name: datanode
     hostname: datanode
     # restart: unless-stopped
@@ -34,9 +34,9 @@ services:
     env_file: *env_file
 
   resourcemanager:
-    image: geekyouth/docker-hadoop:resourcemanager-h3.1.4-java8-3.0.0
-#    build:
-#      context: ./resourcemanager
+    image: ghcr.io/geekyouth/docker-hadoop:resourcemanager-h3.3.4-java8-3.0.0
+    build:
+      context: ./resourcemanager
     container_name: resourcemanager
     hostname: resourcemanager
     # restart: unless-stopped
@@ -50,9 +50,9 @@ services:
     env_file: *env_file
 
   nodemanager:
-    image: geekyouth/docker-hadoop:nodemanager-h3.1.4-java8-3.0.0
-#    build:
-#      context: ./nodemanager
+    image: ghcr.io/geekyouth/docker-hadoop:nodemanager-h3.3.4-java8-3.0.0
+    build:
+      context: ./nodemanager
     container_name: nodemanager
     hostname: nodemanager
     # restart: unless-stopped
@@ -67,9 +67,9 @@ services:
     env_file: *env_file
   
   historyserver:
-    image: geekyouth/docker-hadoop:historyserver-h3.1.4-java8-3.0.0
-#    build:
-#      context: ./historyserver
+    image: ghcr.io/geekyouth/docker-hadoop:historyserver-h3.3.4-java8-3.0.0
+    build:
+      context: ./historyserver
     container_name: historyserver
     hostname: historyserver
     # restart: unless-stopped
@@ -87,9 +87,9 @@ services:
     env_file: *env_file
 
   test_submit:
-    image: geekyouth/docker-hadoop:submit-h3.1.4-java8-3.0.0
-#    build:
-#      context: ./submit
+    image: ghcr.io/geekyouth/docker-hadoop:submit-h3.3.4-java8-3.0.0
+    build:
+      context: ./submit
     container_name: test_submit
     hostname: test_submit
     depends_on:
